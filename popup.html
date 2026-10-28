@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>مشاهدة الفيديو بالعربية</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">أدوات المشاهدة</p>
+        <h1>الفيديو بالعربية</h1>
+      </header>
+      <section class="video-info" aria-live="polite">
+        <span class="status-dot" aria-hidden="true"></span>
+        <div>
+          <p id="video-state">جارٍ البحث عن فيديو...</p>
+          <p id="video-time" class="video-time">--:-- / --:--</p>
+        </div>
+      </section>
+      <button id="fullscreen-button" class="primary" type="button" disabled>ملء الشاشة</button>
+      <label class="file-button" for="subtitle-file">اختيار ملف ترجمة عربي</label>
+      <input id="subtitle-file" type="file" accept=".srt,.vtt,text/vtt,application/x-subrip">
+      <p id="message" class="message" role="status">يدعم ملفات الترجمة SRT وVTT.</p>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

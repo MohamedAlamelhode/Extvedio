@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "مشاهدة الفيديو بالعربية",
+  "version": "1.0.0",
+  "description": "مشاهدة الفيديو كاملاً مع المدة والترجمة العربية واتجاه الكتابة من اليمين إلى اليسار.",
+  "action": {
+    "default_title": "أدوات مشاهدة الفيديو",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+:root {
+  color-scheme: light;
+  font-family: "Noto Sans Arabic", Tahoma, sans-serif;
+  background: #f4f5f0;
+  color: #172321;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  width: 320px;
+  margin: 0;
+  background: radial-gradient(ellipse at 100% 0%, rgba(216, 228, 177, 0.6), transparent 50%), #f4f5f0;
+}
+
+main { padding: 22px; }
+header { margin-bottom: 20px; }
+.eyebrow { margin: 0 0 4px; color: #5c7666; font-size: 12px; font-weight: 600; }
+h1 { margin: 0; font-size: 22px; line-height: 1.4; }
+
+.video-info {
+  display: flex;
+  min-height: 66px;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 13px;
+  border: 1px solid #dce1d8;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.status-dot { flex: 0 0 9px; width: 9px; height: 9px; margin-top: 6px; border-radius: 50%; background: #b6c1b8; }
+.status-dot.active { background: #d35d42; }
+#video-state, .video-time { margin: 0; }
+#video-state { font-size: 13px; font-weight: 600; }
+.video-time { margin-top: 3px; color: #5b6863; direction: ltr; font-size: 12px; text-align: right; }
+
+button, .file-button {
+  display: flex;
+  width: 100%;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background-color 140ms ease, transform 140ms ease;
+}
+
+button:active, .file-button:active { transform: translateY(1px); }
+button:focus-visible, .file-button:focus-visible { outline: 3px solid #95a95e; outline-offset: 2px; }
+.primary { margin-top: 14px; background: #244b3b; color: white; }
+.primary:hover:enabled { background: #193b2e; }
+.primary:disabled { cursor: not-allowed; opacity: 0.48; }
+.file-button { margin-top: 9px; border: 1px solid #b9c9b9; background: #e4ebdf; color: #244b3b; }
+.file-button:hover { background: #d9e4d3; }
+
+#subtitle-file {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+.message { min-height: 34px; margin: 10px 0 0; color: #65726c; font-size: 11px; line-height: 1.6; }
