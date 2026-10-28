@@ -1,5 +1,16 @@
 (() => {
   const subtitleTracks = new WeakMap();
+  let orientationLocked = false;
+
+  function unlockOrientation() {
+    if (!orientationLocked) return;
+    screen.orientation.unlock();
+    orientationLocked = false;
+  }
+
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement) unlockOrientation();
+  });
 
   function getVideo() {
     const videos = [...document.querySelectorAll('video')].filter((video) => {
@@ -88,7 +99,21 @@
         sendResponse({ ok: false, error: 'ملء الشاشة غير مدعوم لهذا الفيديو.' });
         return;
       }
-      video.requestFullscreen().then(() => sendResponse({ ok: true })).catch(() => {
+      video.requestFullscreen().then(async () => {
+        let orientationWarning;
+        if (screen.orientation?.lock) {
+          try {
+            await screen.orientation.lock('landscape');
+            orientationLocked = true;
+            if (document.fullscreenElement !== video) unlockOrientation();
+          } catch {
+            orientationWarning = 'تعذر تدوير الشاشة تلقائيًا. فعّل التدوير التلقائي في الهاتف.';
+          }
+        } else {
+          orientationWarning = 'التدوير التلقائي غير مدعوم؛ فعّل تدوير الشاشة في الهاتف.';
+        }
+        sendResponse({ ok: true, orientationWarning });
+      }).catch(() => {
         sendResponse({ ok: false, error: 'تعذر تشغيل ملء الشاشة.' });
       });
       return true;

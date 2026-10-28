@@ -55,6 +55,7 @@ fullscreenButton.addEventListener('click', async () => {
   try {
     const response = await sendToPage({ type: 'ENTER_FULLSCREEN' });
     if (!response?.ok) message.textContent = response?.error || 'تعذر تشغيل ملء الشاشة.';
+    else message.textContent = response.orientationWarning || '';
   } catch (error) {
     message.textContent = error.message;
   }
